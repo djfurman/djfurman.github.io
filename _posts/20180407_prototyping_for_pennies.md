@@ -8,6 +8,8 @@ title: Prototyping for Pennies
 
 I hope you've experienced this excitement; it's one of the best parts about doing our work. Unique amongst professionals, we have the ability to take our ideas to leaders or the market not through pitches, but working examples.
 
+# Prototyping
+
 We tend, in software development, to refer to this step as "prototyping", and honestly it's my favorite part of the job. Some companies even dedicate time for their staff to always have this sort of prototyping outlet for some fraction of their working hours.
 
 The issue with this is cost. Making time for prototyping is costly enough as opportunity costs range from progress on committed deadlines to that extra few hours of sleep or downtime. Compounding this is the cost of servers, setup, changeover, and provisioning to make your prototype something more than local-ware.
@@ -31,7 +33,7 @@ Let's instead discuss an alternative, serverless application design.
 In this pattern, we use managed services (in this case provided by AWS) to provide working web serving of front end web pages and pay-per execution compute services for back-end logic. There are two massive advantages to this, the first being nearly zero overhead to getting started with world class infrastructure and the second being cost.
 
 - I'll refer you to AWS's documentation here for [official site hosting costs](https://aws.amazon.com/getting-started/projects/host-static-website/services-costs/), but as of the date of this writing it will between $1 - $3 per month at scale.
-- Same goes for back-compute services; see AWS's documentation for [official lambda costs](https://aws.amazon.com/lambda/pricing/), but as of this writing the first million calls are free, the $0.20 (yes twenty-cents) for each subsequent block of one million calls.
+- Same goes for back-compute services; see AWS's documentation for [official lambda costs](https://aws.amazon.com/lambda/pricing/), but as of this writing the first million calls are free, the $0.20 (yes, twenty-cents) for each subsequent block of one million calls.
 
 ## Typical Prototyping
 
@@ -41,6 +43,7 @@ Whether working by myself or with a team, prototyping projects follow arguably t
 - Identify application logic
 - Define entry points
 - Break!
+- Write code
 - Come back together
 - Tie it all together
 
@@ -56,9 +59,9 @@ Your prototype then has to go from local-ware to something production ready.
 
 ### What's next?
 
-This is where lots of people talk about "production-izing" their applications bringing in authentication/authorization, working with bigger databases, provisioning more servers, load balancing and more. These are all great steps and I personally love working on the solutions architecture of these solutions, but none of this is easy (or cheap)!
+This is where lots of people talk about "production-izing" their applications bringing in authentication/authorization, working with bigger databases, provisioning more servers, load balancing and more. These are all great steps and I personally love working on the solutions architecture of these deployments, but none of this is easy (or cheap)!
 
-## Serverless Prototyping
+## An alternative: Serverless Prototyping
 
 Certainly, and if you've made it this far in this blog, you may already know what it is - _serverless_ technology. If you're new to the term; I promise, I'm not insane. I know there are servers, you (the prototyper or team) just does not have a requirement to provision and manage them. Instead, it refers to the usage of services that are _managed_ by a provider.
 
@@ -80,11 +83,13 @@ Oh, and if you didn't know; you get 99.99% reliability and eleven-nines durabili
 
 Sure!
 
-You can do this with AWS native [cloud formation templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html) (JSON or YAML files that direct resource creation) but I find them hard to follow and debug.
+You can do this with AWS native [cloud formation templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html) (JSON or YAML files that direct resource creation), but I find them hard to follow and debug.
 
-I could walk you through the AWS console (it's trivially simple) but my screen-shots would go out of date eventually and that would be frustrating, plus infrastructure as code is so cool!
+I could walk you through the AWS console (it's trivially simple) but my screen-shots would go out of date eventually which would be frustrating, plus infrastructure as code is so cool!
 
-Instead, here's a [Terraform](https://www.terraform.io/) example - which I think is much easier to understand. If you don't have Terraform installed visit their page or if you have a Mac running [homebrew](https://brew.sh/) just run `brew install terraform`.
+Instead, here's a [Terraform](https://www.terraform.io/) example - which I think is much easier to understand. If you don't have Terraform installed, visit their page or if you have a Mac running [homebrew](https://brew.sh/) just run `brew install terraform`.
+
+Then, just create the following in a file called `*.tf`, for example `prototype.tf`
 
 ```hcl
 provider "aws" {
@@ -104,9 +109,9 @@ resource "aws_s3_bucket" "prototype_project" {
 }
 ```
 
-Run `terraform init && terraform apply` and check your account, you're good to start using the bucket immediately.
+From the folder with this file, run `terraform init && terraform apply` and check your AWS account, you're good to start using the bucket immediately.
 
-The S3 console will give you the accessible URL for the prototype site. Upload a simple page to the bucket and your  `index.html` page will load and of course pull all CSS, JavaScript and whatever else you ask it to as part of the load. If something goes wrong, the error page is thrown.
+The S3 console will give you the accessible URL for the prototype site. Upload a simple page to the bucket and your `index.html` page will load and of course pull all CSS, JavaScript and whatever else you ask it to as part of the load. If something goes wrong, the error page is thrown.
 
 ## What's next?
 
