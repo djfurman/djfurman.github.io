@@ -22,7 +22,7 @@ AWS is an incredible offering of services with dozens of options. Don't worry, y
 
 Assuming your prototype is a web application, this architecture should be somewhat familiar. On the left, we have standard web assets served by any of several options and referred to by a DNS name (e.g., `www.example.com`).
 
-If you come from a classical background, each page pay require a different `*.html` page or have a server (e.g., [WordPress](https://wordpress.com/), [Laravel](https://laravel.com/), [Drupal](https://www.drupal.org/), [Django](https://www.djangoproject.com/), [Flask](http://flask.pocoo.org/), [Ruby on Rails](http://rubyonrails.org/)) handle each request, prepare a page dynamically and send it back to the user.
+If you come from a classical background, each 'page' may require a different `*.html` artifact or have a server (e.g., [WordPress](https://wordpress.com/), [Laravel](https://laravel.com/), [Drupal](https://www.drupal.org/), [Django](https://www.djangoproject.com/), [Flask](http://flask.pocoo.org/), [Ruby on Rails](http://rubyonrails.org/)) handle each request, prepare a page dynamically and send it back to the user.
 
 ### A possible alternative
 
