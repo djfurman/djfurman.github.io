@@ -1,4 +1,7 @@
-# Prototyping for Pennies
+---
+layout: post
+title: Prototyping for Pennies
+---
 
 > A great idea has been flying around my head for weeks, I've done some market research and it seems like I'm really on to something! The test groups I've run it by are impressed seeing the utility and the market isn't already saturated with similar concepts.
 >It's time to start making it real!
